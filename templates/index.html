@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE.MIA</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background */
+            color: #fff; /* White text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Full-Width Hero Section */
+        .hero {
+            position: relative;
+            background-color: #121212; /* Matching background with dark theme */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            color: #bbb;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            background-color: #000;
+            color: #fff;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #333; /* Slight hover effect */
+        }
+
+        /* Container for Tweet Form */
+        .tweet-container {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            text-align: center;
+        }
+
+        .tweet-container h1 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .tweet-box textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            resize: none;
+            background-color: #333;
+            color: #fff;
+            height: 120px;
+        }
+
+        .tweet-box button {
+            padding: 12px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tweet-box button:hover {
+            background-color: #333; /* Subtle hover effect */
+        }
+
+        /* Display Tweets */
+        .tweets {
+            margin-top: 30px;
+            text-align: left;
+            color: #ccc;
+        }
+
+        .tweet {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .tweet strong {
+            font-weight: bold;
+        }
+
+        .tweet-time {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Full-Width Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Mini Twitter</h1>
+        <p>Share your thoughts in real-time with the world. Simple, clean, and easy to use.</p>
+        <button class="cta-button">Get Started</button>
+    </div>
+
+    <!-- Tweet Container -->
+    <div class="tweet-container">
+        <h1>Post Item</h1>
+
+        <!-- Tweet Form -->
+        <form method="POST" class="tweet-box">
+            <textarea name="content" placeholder="What's happening?" required></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h1>Recent Uploads</h1>
+        <!-- Display Tweets -->
+        <div class="tweets">
+            {% for tweet in tweets %}
+                <div class="tweet">
+                    <div class="tweet-time">{{ tweet.timestamp }}</div>
+                    <div>{{ tweet.username }}: <strong>{{ tweet.content }}</strong></div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
